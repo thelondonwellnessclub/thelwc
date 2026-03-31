@@ -152,11 +152,11 @@ body.fade-out{opacity:0}
 /* ── VALUES ── */
 .values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem}
 .value-card{padding:2.4rem 2rem;background:rgba(255,255,255,.45);
-  border:1px solid var(--line);
+  border:1px solid var(--line);border-top:3px solid rgba(109,22,48,.35);
   transition:transform .26s cubic-bezier(.22,1,.36,1),box-shadow .26s}
 .value-card:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(22,49,38,.1)}
 .value-num{font-family:Georgia,"Times New Roman",serif;font-size:2.8rem;
-  color:rgba(109,22,48,.15);font-weight:600;line-height:1;margin-bottom:1rem}
+  color:rgba(109,22,48,.55);font-weight:600;line-height:1;margin-bottom:1rem}
 .value-title{font-family:Georgia,"Times New Roman",serif;font-size:1.2rem;
   color:var(--green);font-weight:600;margin-bottom:.7rem}
 .value-body{font-size:var(--base);color:var(--muted);line-height:1.75}
@@ -236,7 +236,26 @@ footer{background:var(--green);padding:2rem 0}
 }
 @media(max-width:520px){
   .values-grid{grid-template-columns:1fr}
-  .about-hero{padding:8rem 1.3rem 4rem}
+  .about-hero{padding:8rem 1.4rem 3.5rem}
+}
+
+@media(max-width:520px){
+  .inspo-card{padding:1.5rem 1.4rem}
+  .value-card{padding:2rem 1.6rem}
+  .founder-card{padding:1.8rem 1.5rem}
+  .cta-band{padding:3.5rem 1.4rem}
+  .story-body p{font-size:.96rem}
+  .pull-quote{font-size:1.2rem}
+  .big-quote-text{font-size:1.3rem}
+  .values-grid{grid-template-columns:1fr}
+}
+
+@media(min-width:861px){
+  .story-grid{gap:6rem}
+  .pull-quote{font-size:clamp(1.5rem,1.1rem + 1vw,1.9rem)}
+  .value-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(22,49,38,.12)}
+  .inspo-card{padding:2.4rem 2.6rem}
+  .cta-band-title{font-size:3rem}
 }
 </style>
 </head>
