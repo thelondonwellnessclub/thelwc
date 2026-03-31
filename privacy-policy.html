@@ -14,10 +14,14 @@ body{min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ar
 .pp-header{background:var(--green);padding:2rem 0}
 .pp-inner{width:min(760px,calc(100% - 2.5rem));margin:0 auto}
 .pp-header .pp-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem}
-.pp-back{color:rgba(248,241,230,.65);text-decoration:none;font-size:var(--xs);
-  letter-spacing:.18em;text-transform:uppercase;border-bottom:1px solid rgba(248,241,230,.2);
-  padding-bottom:1px;transition:color .18s}
-.pp-back:hover{color:var(--inv)}
+.pp-back{display:inline-flex;align-items:center;gap:.5rem;
+  color:rgba(248,241,230,.75);text-decoration:none;font-size:var(--xs);
+  letter-spacing:.18em;text-transform:uppercase;
+  padding:.6rem 1.1rem .6rem .8rem;
+  border:1px solid rgba(248,241,230,.2);
+  transition:color .2s,border-color .2s,background .2s}
+.pp-back:hover{color:var(--inv);border-color:rgba(248,241,230,.5);background:rgba(248,241,230,.07)}
+.pp-back svg{width:14px;height:14px;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;fill:none}
 .pp-brand{font-family:Georgia,'Times New Roman',serif;font-size:1rem;color:rgba(248,241,230,.4);letter-spacing:.04em}
 .pp-wrap{padding:4rem 0 6rem}
 .pp-eyebrow{font-size:var(--xs);letter-spacing:.28em;text-transform:uppercase;color:var(--burg);font-weight:600;display:block;margin-bottom:.9rem}
@@ -27,7 +31,7 @@ body{min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ar
 .pp-section h2{font-family:Georgia,'Times New Roman',serif;font-size:clamp(1.1rem,1rem + .3vw,1.3rem);color:var(--green);font-weight:600;margin-bottom:.7rem;padding-left:.9rem;border-left:2.5px solid var(--burg)}
 .pp-section p,.pp-section li{font-size:var(--base);color:var(--muted);line-height:1.8;margin-bottom:.5rem}
 .pp-section ul{padding-left:1.3rem;margin:.3rem 0 .6rem}
-.pp-section a{color:var(--brown);border-bottom:1px solid rgba(62,42,31,.3);text-decoration:none}
+.pp-section a{color:var(--brown);border-bottom:1px solid rgba(62,42,31,.3);text-decoration:none;transition:color .2s}
 .pp-section a:hover{color:var(--burg)}
 .pp-footer{background:var(--green);padding:1.4rem 0;text-align:center}
 .pp-footer p{font-size:var(--xs);letter-spacing:.1em;text-transform:uppercase;color:rgba(248,241,230,.35)}
@@ -36,7 +40,10 @@ body{min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Ar
 <body>
 <header class="pp-header">
   <div class="pp-inner">
-    <a class="pp-back" href="london-wellness-club-form-live.html">&larr; Back</a>
+    <a class="pp-back" href="index.html">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      Back
+    </a>
     <span class="pp-brand">London Wellness Club</span>
   </div>
 </header>
