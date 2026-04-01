@@ -312,16 +312,19 @@ footer{position:relative}
 <style>
 
 /* ── NAV CTA BUTTON ── */
-.nav-cta{display:none}
+/* Mobile-first: show on all sizes */
+.nav-cta{
+  display:inline-flex;align-items:center;justify-self:center;
+  padding:.4rem .85rem;
+  border:1px solid rgba(109,22,48,.45);color:var(--burg);background:transparent;
+  font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;
+  text-decoration:none;white-space:nowrap;
+  transition:background .2s,border-color .2s,color .2s,transform .15s;
+}
+.nav-cta:hover{background:rgba(109,22,48,.07);border-color:var(--burg);transform:translateY(-1px)}
+/* Larger on desktop */
 @media(min-width:640px){
-  .nav-cta{
-    display:inline-flex;align-items:center;justify-self:center;padding:.5rem 1.25rem;
-    border:1px solid rgba(109,22,48,.45);color:var(--burg);background:transparent;
-    font-size:var(--xs);letter-spacing:.18em;text-transform:uppercase;font-weight:600;
-    text-decoration:none;white-space:nowrap;
-    transition:background .2s,border-color .2s,color .2s,transform .15s;
-  }
-  .nav-cta:hover{background:rgba(109,22,48,.07);border-color:var(--burg);transform:translateY(-1px)}
+  .nav-cta{padding:.5rem 1.25rem;font-size:var(--xs);letter-spacing:.18em}
 }
 /* ── NAV SCROLLED ── */
 .site-nav{transition:box-shadow .3s ease}
@@ -338,7 +341,7 @@ footer{position:relative}
 .level-card input{position:absolute;opacity:0;pointer-events:none;width:0;height:0}
 .level-inner{
   display:flex;flex-direction:column;gap:.2rem;padding:.9rem 1rem;width:100%;
-  border:1px solid var(--liner);background:rgba(255,255,255,.3);
+  border:1px solid var(--line);background:rgba(255,255,255,.3);
   transition:border-color .2s,background .2s;min-height:68px;
 }
 .level-card input:checked ~ .level-inner{border-color:var(--burg);background:rgba(109,22,48,.06)}
@@ -355,6 +358,25 @@ footer{position:relative}
 html{scroll-behavior:smooth}
 body{transition:opacity .34s cubic-bezier(.22,1,.36,1)}
 body.fade-out{opacity:0}
+
+/* ── MEMBERSHIP STEPS ── */
+.mem-grid{align-items:stretch}
+.mem-copy{display:flex;flex-direction:column}
+.mem-headline{font-family:Georgia,'Times New Roman',serif;font-size:clamp(1.9rem,1.3rem + 1.6vw,2.6rem);line-height:1.04;color:var(--green);font-weight:600;margin:0 0 1rem}
+.mem-intro{color:var(--muted);font-size:var(--base);margin:0 0 0;line-height:1.7;max-width:34ch}
+.mem-em{font-style:normal;color:var(--burg);font-weight:500;letter-spacing:.01em}
+.mem-note{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:clamp(.9rem,.86rem + .2vw,1rem);color:var(--brown);line-height:1.65;margin:1.2rem 0 0;padding-left:1rem;border-left:2px solid rgba(109,22,48,.25)}
+.mem-steps{margin-top:1.8rem;padding-top:0;display:grid;gap:0}
+.mem-step{display:flex;align-items:flex-start;gap:1.3rem;padding:1.4rem 0;border-top:1px solid var(--line)}
+.mem-step-n{font-family:Georgia,'Times New Roman',serif;font-size:1.7rem;color:rgba(109,22,48,.28);line-height:1;flex:0 0 2.4rem;font-weight:600;letter-spacing:.02em;padding-top:.1rem}
+.mem-step-body{display:flex;flex-direction:column;gap:.3rem}
+.mem-step-body strong{font-family:Georgia,'Times New Roman',serif;font-size:1.15rem;color:var(--green);font-weight:600;line-height:1.2}
+.mem-step-body span{font-size:var(--sm);color:var(--muted);line-height:1.65}
+@media(max-width:860px){
+  .mem-copy{margin-bottom:0}
+  .mem-intro{max-width:100%}
+  .mem-steps{margin-top:1.8rem;padding-top:0}
+}
 </style>
 </head>
 <body>
@@ -427,7 +449,7 @@ body.fade-out{opacity:0}
         <div class="club-col">
           <div class="club-n">03</div>
           <h3>Effortless by design</h3>
-          <p>Less admin, more play. A well-run session in the right company, from arrival to the last point.</p>
+          <p>Each session is guided by a licensed coach who navigates the entire experience. Players are grouped by level—ensuring everyone plays at the right intensity and gets the most out of the session. This is not just a social—it’s structured, elevated group training.</p>
         </div>
       </div>
     </div>
@@ -440,8 +462,8 @@ body.fade-out{opacity:0}
       <h2 class="sec-title">Tennis Social</h2>
       <div class="event-grid">
         <article class="card ev-main">
-          <h3>A social group session with a licensed coach.</h3>
-          <p>Designed as a relaxed members' gathering on court — a little structure, a little play, everything else handled.</p>
+          <h3>A coach-led group session.</h3>
+          <p>A coach-led group session designed to combine structure and social energy — with everything taken care of. All equipment is provided — rackets, balls, and everything on court. Players are grouped by level.</p>
           <div class="tags">
             <span class="tag">Licensed coach</span>
             <span class="tag">Members only</span>
@@ -455,7 +477,7 @@ body.fade-out{opacity:0}
             <div class="detail" style="border-top:1px solid rgba(62,42,31,.12);padding:.65rem 0 .55rem"><span>Format</span><span>Group social</span></div>
             <div class="detail" style="border-top:1px solid rgba(62,42,31,.12);padding:.65rem 0 .55rem"><span>Access</span><span>Members only</span></div>
             <div class="detail" style="border-top:1px solid rgba(62,42,31,.12);padding:.65rem 0 .55rem"><span>Capacity</span><span>Limited</span></div>
-            <div class="detail" style="border-top:1px solid rgba(62,42,31,.12);padding:.65rem 0 .55rem"><span>Feel</span><span>Relaxed</span></div>
+            <div class="detail" style="border-top:1px solid rgba(62,42,31,.12);padding:.65rem 0 .55rem"><span>Feel</span><span>Structured &amp; Social</span></div>
           </div>
         </aside>
       </div>
@@ -468,20 +490,38 @@ body.fade-out{opacity:0}
   <section class="sec" id="membership">
     <div class="wrap">
       <span class="eyebrow">Membership</span>
-      <h2 class="sec-title">Curated. Members Only.</h2>
+      <h2 class="sec-title">Membership First. Access Second.</h2>
       <div class="mem-grid">
         <div class="mem-copy">
-          <h3>Leave your details to apply. <span class="nowrap">We will contact you.</span></h3>
-          <p>This is a private community with limited access. Applications are reviewed carefully and contact is made directly.</p>
-          <p>The tone is simple: good tennis, good hosting, good people.</p>
-          <ul class="perks">
-            <li>Licensed coaching and hosted sessions</li>
-            <li>Equipment and refreshments included</li>
-            <li>A calm, members-only atmosphere</li>
-          </ul>
+          <h3 class="mem-headline">How it works.</h3>
+          <p class="mem-intro">London Wellness Club is curated. You apply, we review, and approved members gain access to private events. No membership fee — you only pay for sessions you attend.</p>
+          <p class="mem-note">Numbers are kept intentionally small. Access is earned, not assumed. Every session is designed around the people in the room.</p>
+          <div class="mem-steps">
+            <div class="mem-step">
+              <span class="mem-step-n">01</span>
+              <div class="mem-step-body">
+                <strong>Apply</strong>
+                <span>Fill in the form. Takes under a minute. <em class="mem-em">No commitment required.</em></span>
+              </div>
+            </div>
+            <div class="mem-step">
+              <span class="mem-step-n">02</span>
+              <div class="mem-step-body">
+                <strong>Get reviewed</strong>
+                <span>Every application is reviewed personally. <em class="mem-em">We respond within 24–48 hours.</em></span>
+              </div>
+            </div>
+            <div class="mem-step">
+              <span class="mem-step-n">03</span>
+              <div class="mem-step-body">
+                <strong>Gain access</strong>
+                <span>Approved members can purchase access to events. <em class="mem-em">Pay per session — no recurring fees.</em></span>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="form-card">
-          <p class="form-title">Request an invitation</p>
+          <p class="form-title">Apply for membership</p>
           <div class="form-body" id="formBody">
             <div class="row2">
               <div class="field">
@@ -505,9 +545,9 @@ body.fade-out{opacity:0}
               <label class="level-label">Your Playing Level</label>
               <div class="level-grid">
                 <label class="level-card"><input type="radio" name="level" value="New to Tennis"><span class="level-inner"><span class="level-name">New to Tennis</span><span class="level-desc">Just starting out or returning</span></span></label>
-                <label class="level-card"><input type="radio" name="level" value="Social"><span class="level-inner"><span class="level-name">Social</span><span class="level-desc">I play for fun &amp; casual games</span></span></label>
-                <label class="level-card"><input type="radio" name="level" value="Club"><span class="level-inner"><span class="level-name">Club</span><span class="level-desc">Regular player, comfortable rallying</span></span></label>
-                <label class="level-card"><input type="radio" name="level" value="Competitive"><span class="level-inner"><span class="level-name">Competitive</span><span class="level-desc">I enter leagues or tournaments</span></span></label>
+                <label class="level-card"><input type="radio" name="level" value="Improver"><span class="level-inner"><span class="level-name">Improver</span><span class="level-desc">Building consistency and confidence</span></span></label>
+                <label class="level-card"><input type="radio" name="level" value="Intermediate"><span class="level-inner"><span class="level-name">Intermediate</span><span class="level-desc">Comfortable rallying, developing technique</span></span></label>
+                <label class="level-card"><input type="radio" name="level" value="Advanced"><span class="level-inner"><span class="level-name">Advanced</span><span class="level-desc">Strong game, plays regularly or competitively</span></span></label>
               </div>
             </div>
                         <button class="submit-btn" type="button" id="submitBtn" onclick="submitForm()">Submit application</button>
@@ -533,7 +573,7 @@ body.fade-out{opacity:0}
         <div class="faq-item"><button class="faq-btn" aria-expanded="false">How do I become a member?<span class="faq-icon"><svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></span></button><div class="faq-body"><div class="faq-body-inner"><p>Membership is by application only. Fill in the form on this page and we'll be in touch within 24 hours.</p></div></div></div>
         <div class="faq-item"><button class="faq-btn" aria-expanded="false">Is there a waiting list?<span class="faq-icon"><svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></span></button><div class="faq-body"><div class="faq-body-inner"><p>Yes. We keep numbers limited intentionally. Apply now to secure your place.</p></div></div></div>
         <div class="faq-item"><button class="faq-btn" aria-expanded="false">Where is the club based?<span class="faq-icon"><svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></span></button><div class="faq-body"><div class="faq-body-inner"><p>We are based in London. The exact location is shared after your application is confirmed.</p></div></div></div>
-        <div class="faq-item"><button class="faq-btn" aria-expanded="false">How much does membership cost?<span class="faq-icon"><svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></span></button><div class="faq-body"><div class="faq-body-inner"><p>Pricing is discussed individually during the introduction stage. We don't publish rates publicly.</p></div></div></div>
+        <div class="faq-item"><button class="faq-btn" aria-expanded="false">How much does membership cost?<span class="faq-icon"><svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></span></button><div class="faq-body"><div class="faq-body-inner"><p>Membership is free. Once accepted, you gain access to events—each priced individually and shared upon confirmation.</p></div></div></div>
         <div class="faq-item"><button class="faq-btn" aria-expanded="false">What level do I need?<span class="faq-icon"><svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></span></button><div class="faq-body"><div class="faq-body-inner"><p>All levels welcome — character and attitude matter more than ability.</p></div></div></div>
         <div class="faq-item"><button class="faq-btn" aria-expanded="false">Can I bring guests?<span class="faq-icon"><svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></span></button><div class="faq-body"><div class="faq-body-inner"><p>Members may bring guests on a limited basis. Full details shared upon joining.</p></div></div></div>
         <div class="faq-item"><button class="faq-btn" aria-expanded="false">How long does it take?<span class="faq-icon"><svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></span></button><div class="faq-body"><div class="faq-body-inner"><p>We typically respond within 24–48 hours of receiving your application.</p></div></div></div>
