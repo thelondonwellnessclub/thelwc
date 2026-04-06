@@ -954,48 +954,61 @@ body::after{
 
 <script>
 async function submitForm() {
-  const btn    = document.getElementById('submitBtn');
-  const errEl  = document.getElementById('formError');
+  const btn = document.getElementById('submitBtn');
+  const errEl = document.getElementById('formError');
   errEl.style.display = 'none';
-  errEl.textContent   = '';
+  errEl.textContent = '';
 
-  const first   = document.getElementById('first').value.trim();
-  const last    = document.getElementById('last').value.trim();
-  const phone   = document.getElementById('phone').value.trim();
-  const email   = document.getElementById('email').value.trim();
-  const insta   = document.getElementById('insta').value.trim();
+  const firstEl = document.getElementById('first');
+  const lastEl = document.getElementById('last');
+  const phoneEl = document.getElementById('phone');
+  const emailEl = document.getElementById('email');
+  const instaEl = document.getElementById('insta');
+  const linkedinEl = document.getElementById('linkedin');
   const levelEl = document.querySelector('input[name="level"]:checked');
-  const level   = levelEl ? levelEl.value : 'Not selected';
+
+  const first = firstEl ? firstEl.value.trim() : '';
+  const last = lastEl ? lastEl.value.trim() : '';
+  const phone = phoneEl ? phoneEl.value.trim() : '';
+  const email = emailEl ? emailEl.value.trim() : '';
+  const insta = instaEl ? instaEl.value.trim() : '';
+  const linkedin = linkedinEl ? linkedinEl.value.trim() : '';
+  const level = levelEl ? levelEl.value : 'Not selected';
 
   if (!first || !last || !phone || !email) {
-    errEl.textContent  = 'Please fill in your name, WhatsApp number and email.';
+    errEl.textContent = 'Please fill in your name, WhatsApp number and email.';
     errEl.style.display = 'block';
     return;
   }
 
   btn.textContent = 'Sending…';
-  btn.disabled    = true;
+  btn.disabled = true;
 
   const formData = new FormData();
-  formData.append('first_name',    first);
-  formData.append('last_name',     last);
-  formData.append('phone',         phone);
-  formData.append('email',         email);
-  formData.append('_replyto',      email);
-  formData.append('instagram',     insta);
+  formData.append('first_name', first);
+  formData.append('last_name', last);
+  formData.append('phone', phone);
+  formData.append('email', email);
+  formData.append('_replyto', email);
+  if (insta) formData.append('instagram', insta);
   if (linkedin) formData.append('linkedin', linkedin);
   formData.append('playing_level', level);
 
   try {
     const res = await fetch('https://formspree.io/f/xreoqykp', {
-      method:  'POST',
-      body:    formData,
+      method: 'POST',
+      body: formData,
       headers: { 'Accept': 'application/json' }
     });
     const json = await res.json().catch(() => ({}));
-    if (res.ok) {
-      const formBody = document.getElementById('formBody');
-      const formSuccess = document.getElementById('formSuccess');
+    if (!res.ok) {
+      const details = (json.errors || []).map(e => e.message).join(', ');
+      throw new Error(details || json.error || ('Server returned ' + res.status));
+    }
+
+    const formBody = document.getElementById('formBody');
+    const formSuccess = document.getElementById('formSuccess');
+    if (formBody && formSuccess) {
       formBody.style.transition = 'opacity .35s ease';
       formBody.style.opacity = '0';
       setTimeout(() => {
@@ -1006,13 +1019,12 @@ async function submitForm() {
         });
       }, 360);
     } else {
-      const details = (json.errors || []).map(e => e.message).join(', ');
-      throw new Error(details || json.error || 'Server returned ' + res.status);
+      btn.textContent = 'Submitted';
     }
   } catch (e) {
-    btn.textContent     = 'Submit application';
-    btn.disabled        = false;
-    errEl.textContent   = e.message || 'Something went wrong. Please try again.';
+    btn.textContent = 'Submit application';
+    btn.disabled = false;
+    errEl.textContent = e.message || 'Something went wrong. Please try again.';
     errEl.style.display = 'block';
   }
 }
