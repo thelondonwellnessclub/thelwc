@@ -983,7 +983,7 @@ async function submitForm() {
   formData.append('email',         email);
   formData.append('_replyto',      email);
   formData.append('instagram',     insta);
-  formData.append('linkedin',      linkedin);
+  if (linkedin) formData.append('linkedin', linkedin);
   formData.append('playing_level', level);
 
   try {
