@@ -365,6 +365,50 @@ footer{position:relative}
 .foot-tiktok,
 .foot-insta:hover,
 .foot-tiktok:hover{color:rgba(248,241,230,.9);transform:translateY(-2px)}
+
+/* COMING SOON EVENT BOX */
+.event-coming-soon{margin-top:3rem}
+.event-cs-inner{
+  background:rgba(255,255,255,.32);
+  border:1px solid rgba(62,42,31,.14);
+  box-shadow:0 8px 40px rgba(22,49,38,.07);
+  padding:clamp(2.8rem,6vw,4.2rem) clamp(1.6rem,5vw,3.6rem);
+  text-align:center;
+  display:flex;flex-direction:column;align-items:center;gap:1.5rem;
+}
+.event-cs-glyph{
+  font-size:1.4rem;
+  color:rgba(109,22,48,.22);
+  line-height:1;
+  letter-spacing:.6em;
+  padding-left:.6em;
+  animation:csGlyphPulse 3.2s cubic-bezier(.45,0,.55,1) infinite;
+}
+@keyframes csGlyphPulse{0%,100%{opacity:.22}50%{opacity:.65}}
+.event-cs-title{
+  font-family:Georgia,'Times New Roman',serif;
+  font-size:clamp(1.7rem,1.3rem + 1.4vw,2.6rem);
+  color:var(--green);font-weight:600;line-height:1.1;margin:0;letter-spacing:.01em;
+}
+.event-cs-sub{
+  color:var(--muted);font-size:var(--base);max-width:32ch;margin:0;line-height:1.8;
+  font-family:Georgia,'Times New Roman',serif;font-style:italic;
+}
+.event-cs-btn{
+  display:inline-flex;align-items:center;margin-top:.5rem;padding:.8rem 2.6rem;
+  border:1px solid var(--burg);color:var(--burg);background:transparent;
+  font-size:var(--xs);letter-spacing:.2em;text-transform:uppercase;
+  font-weight:600;text-decoration:none;
+  transition:background .45s cubic-bezier(.4,0,.2,1),color .45s cubic-bezier(.4,0,.2,1),letter-spacing .45s cubic-bezier(.4,0,.2,1);
+  min-height:44px;
+}
+.event-cs-btn:hover{background:var(--burg);color:var(--inv);letter-spacing:.26em}
+.event-cs-note{
+  font-size:var(--xs);letter-spacing:.22em;text-transform:uppercase;
+  color:var(--faint);margin-top:-.4rem;
+}
+@media(prefers-reduced-motion:reduce){.event-cs-glyph{animation:none;opacity:.4}}
+
 </style>
 <style>
 
@@ -733,7 +777,7 @@ body::after{
         <div class="club-col reveal reveal-delay-2">
           <div class="club-n" data-count="3">03</div>
           <h3>Effortless by design</h3>
-          <p>Each session is guided by a licensed coach who navigates the entire experience. Players are grouped by level—ensuring everyone plays at the right intensity and gets the most out of the session. This is not just a social—it’s <em class="pg-em">structured, elevated group training.</em></p>
+          <p>Each session is guided by a licensed coach. Beyond tennis, the club embraces <em class="pg-em">yoga, social gatherings</em> and curated experiences&nbsp;&mdash; spaces to move, breathe, and connect with the right people.</p>
         </div>
       </div>
     </div>
@@ -743,43 +787,14 @@ body::after{
   <section class="sec" id="events">
     <div class="wrap">
       <span class="eyebrow reveal">Next Event</span>
-      <h2 class="sec-title reveal reveal-delay-1">Tennis Social</h2>
-      <div class="event-grid">
-        <article class="card ev-main reveal">
-          <h3>A coach-led group session.</h3>
-          <p>A coach-led group session designed to combine structure and social energy — with everything taken care of. All equipment is provided — rackets, balls, and everything on court. Players are grouped by level.</p>
-          <div class="tags">
-            <span class="tag">Licensed coach</span>
-            <span class="tag">Members only</span>
-            <span class="tag">Equipment included</span>
-            <span class="tag">Chelsea &amp; Kensington</span>
-          </div>
-        </article>
-        <aside class="card ev-side reveal reveal-delay-1">
-          <div class="quote">rackets, balls, matcha, vibes — on us<br>good mood — on you</div>
-          <div class="detail-grid" style="display:grid;grid-template-columns:1fr 1fr;column-gap:.4rem;row-gap:0;align-items:start">
-            <div class="detail" style="border-top:1px solid rgba(62,42,31,.12);padding:.65rem 0 .55rem"><span>Date</span><span>11 April</span></div>
-            <div class="detail" style="border-top:1px solid rgba(62,42,31,.12);padding:.65rem 0 .55rem"><span>Access</span><span><em class="pg-em">Members only</em></span></div>
-            <div class="detail" style="border-top:1px solid rgba(62,42,31,.12);padding:.65rem 0 .55rem"><span>Price</span><span>On confirmation</span></div>
-            <div class="detail" style="border-top:1px solid rgba(62,42,31,.12);padding:.65rem 0 .55rem"><span>Feel</span><span>Structured &amp; Social</span></div>
-            <div class="detail" style="border-top:1px solid rgba(62,42,31,.12);padding:.65rem 0 .55rem;grid-column:1/-1"><span>Location</span><span>Chelsea &amp; Kensington, London</span></div>
-          </div>
-        </aside>
-      </div>
-
-      <!-- SPOTS BANNER -->
-      <div class="spots-banner reveal reveal-delay-2">
-        <div class="spots-inner">
-          <div class="spots-left">
-            <span class="spots-label">Availability</span>
-            <span class="spots-count">6 spots remaining</span>
-          </div>
-          <div class="spots-divider"></div>
-          <div class="spots-right">
-            <span class="spots-label">Pricing</span>
-            <span class="spots-price">Disclosed upon approval</span>
-          </div>
-          <a href="#membership" class="spots-cta">Apply now</a>
+      <h2 class="sec-title reveal reveal-delay-1">Something is forming.</h2>
+      <div class="event-coming-soon reveal reveal-delay-1">
+        <div class="event-cs-inner">
+          <div class="event-cs-glyph">&middot;&nbsp;&nbsp;&middot;&nbsp;&nbsp;&middot;</div>
+          <h3 class="event-cs-title">The next event is on its way.</h3>
+          <p class="event-cs-sub">Something is being put together. Details will be revealed when the time is right&nbsp;&mdash; not before.</p>
+          <a href="#membership" class="event-cs-btn">Apply to receive updates</a>
+          <span class="event-cs-note">Members are notified first.</span>
         </div>
       </div>
 
@@ -850,15 +865,6 @@ body::after{
             <div class="field">
               <label for="linkedin">LinkedIn Profile</label>
               <input id="linkedin" name="linkedin" type="text" placeholder="linkedin.com/in/yourprofile" autocomplete="url">
-            </div>
-            <div class="field">
-              <label class="level-label">Your Playing Level</label>
-              <div class="level-grid">
-                <label class="level-card"><input type="radio" name="level" value="New to Tennis"><span class="level-inner"><span class="level-name">New to Tennis</span></span></label>
-                <label class="level-card"><input type="radio" name="level" value="Improver"><span class="level-inner"><span class="level-name">Improver</span></span></label>
-                <label class="level-card"><input type="radio" name="level" value="Intermediate"><span class="level-inner"><span class="level-name">Intermediate</span></span></label>
-                <label class="level-card"><input type="radio" name="level" value="Advanced"><span class="level-inner"><span class="level-name">Advanced</span></span></label>
-              </div>
             </div>
                         <button class="submit-btn" type="button" id="submitBtn" onclick="submitForm()">Submit application</button>
           <p class="form-privacy">By submitting you agree to our <a href="privacy-policy-2.html" class="privacy-link">Privacy Policy</a>.</p>
